@@ -58,12 +58,13 @@ class _UserActivityState extends State<UserActivity> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Image(
-                                          image: AssetImage("images/user_icon.png"),
+                                        Container(
                                           height: 100,
                                           width: 100,
-                                          fit: BoxFit.contain,
-                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.grey),
+                                              image: DecorationImage(
+                                                  image: AssetImage("images/user_icon.png"), fit: BoxFit.contain, alignment: Alignment.center)),
                                         ),
                                         SizedBox(
                                           width: 10,
