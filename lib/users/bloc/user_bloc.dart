@@ -32,10 +32,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
         yield GetUserSuccessState(userList: user.user);
       } else {
-        yield FailureSate(message: response.statusMessage);
+        yield FailureState(message: response.statusMessage);
       }
     } else {
-      yield FailureSate(message: "Please check your internet connection!");
+      yield FailureState(message: "Please check your internet connection!");
     }
   }
 }

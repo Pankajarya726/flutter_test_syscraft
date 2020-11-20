@@ -18,10 +18,10 @@ class GetUserSuccessState extends UserState {
   List<Object> get props => [userList];
 }
 
-class FailureSate extends UserState {
+class FailureState extends UserState {
   final String message;
 
-  FailureSate({@required this.message});
+  FailureState({@required this.message});
 
   @override
   List<Object> get props => [message];

@@ -26,7 +26,57 @@ class _UserActivityState extends State<UserActivity> {
     return BlocProvider<UserBloc>(
       create: (context) => UserBloc(),
       child: BlocListener<UserBloc, UserState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is FailureState) {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          InkWell(
+                            child: Icon(
+                              Icons.clear,
+                              color: Colors.black,
+                            ),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          )
+                        ],
+                      )),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  titlePadding: EdgeInsets.all(10),
+                  contentPadding: EdgeInsets.all(20),
+                  actionsPadding: EdgeInsets.all(10),
+                  content: Text(
+                    "${state.message}",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text(
+                        'Ok',
+                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      color: Colors.blue,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+        },
         child: SafeArea(
             child: Scaffold(
                 backgroundColor: Color(0xFFefefef),
